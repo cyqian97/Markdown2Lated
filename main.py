@@ -24,7 +24,7 @@ def markdown2latex(lines_md, _level_shift, _level_unnumbered):
             flag_mathblock = not flag_mathblock
             if not flag_mathblock:
                 if flag_needeq:
-                    lines_tex.append("\\end{split}\n"+label+"\\end{equation*}\n")
+                    lines_tex.append("\\end{split}\n" + label + "\\end{equation*}\n")
                     label = ""
                 flag_findbegin = False
                 flag_needeq = False
@@ -91,8 +91,8 @@ def markdown2latex(lines_md, _level_shift, _level_unnumbered):
     return lines_tex
 
 
-filein = r"C:\Users\selen\OneDrive - Texas A&M University\Project\Linear-time Encodable Codes\Notes\4 Cyclic Codes.md"
-fileout = r"C:\Users\selen\OneDrive - Texas A&M University\Project\Linear-time Encodable Codes\Notes\4CyclicCodes.tex"
+filein = r"C:\Users\selen\OneDrive - Texas A&M University\Project\Linear-time Encodable Codes\Notes\Note on Sipser1996.md"
+fileout = r"C:\Users\selen\OneDrive - Texas A&M University\Project\Linear-time Encodable Codes\Notes\Note on Sipser1996.tex"
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -106,8 +106,8 @@ if __name__ == "__main__":
     if not p.fileout:
         p.fileout = p.filein.rsplit('.', 1)[0] + ".tex"
 
-    with open(p.filein, 'r') as fid:
+    with open(p.filein, 'r', encoding="utf-8") as fid:
         lines = fid.readlines()
 
-    fid = open(p.fileout, 'w')
+    fid = open(p.fileout, 'w', encoding="utf-8")
     fid.writelines(markdown2latex(lines, p.lshift, p.lunnum))
